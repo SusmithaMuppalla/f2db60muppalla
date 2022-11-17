@@ -5,23 +5,24 @@ block content
     h2 No instance to delete 
   else      
     - let vehicleid = toShow._id
-    - let vehicle_type = toShow.vehicle_type
+   
     - let vehicle_name = toShow.vehicle_name
     - let vehicle_size = toShow.vehicle_size
+    - let vehicle_type = toShow.vehicle_type
     div.row(class='mb-2')
         div.mr-1 ID is
         div #{vehicleid}
     - let actionid = "/resource/vehicle/" + vehicleid
     form(id='vehicleForm', action= actionid, method="PUT")
         div.form-group
-            label.vehicleAttr(for='vehicle_type') vehicle type
-            input#vehicle_type(type='text', name='vehicle_type', value= vehicle_type )
+            label.vehicleAttr(for='vehicle_name') vehicle name
+            input#vehicle_name(type='text', name='vehicle_name', value= vehicle_name )
         div.form-group
             label.vehicleAttr(for='vehicle_size') vehicle size
             input#vehicle_size(type='number', name='vehicle_size', value= vehicle_size )
         div.form-group
-            label.vehicleAttr(for='vehicle_name') vehicle name
-            input#vehicle_name(type='text', name='vehicle_name', value= vehicle_name )
+            label.vehicleAttr(for='vehicle_type') vehicle type
+            input#vehicle_type(type='text', name='vehicle_type', value= vehicle_type )
         input(type="submit")
     script.
         document.forms['vehicleForm'].addEventListener('submit', (event) => {

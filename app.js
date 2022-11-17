@@ -64,7 +64,7 @@ app.use(function(err, req, res, next) {
 
 
 async function recreateDB(){
-  //console.log("#############")
+  
  // Delete everything
  await vehicle.deleteMany();
  let instance1 = new vehicle({vehicle_name:"Bike",vehicle_size:4,vehicle_type:'Motorcycles'});
