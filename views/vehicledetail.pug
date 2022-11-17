@@ -5,19 +5,19 @@ block content
     h2 No instance to delete 
   else    
     - let vehicleid = toShow._id
-    - let vehicle_type = toShow.vehicle_type
-    - let vehicle_size = toShow.vehicle_size
     - let vehicle_name = toShow.vehicle_name
+    - let vehicle_size = toShow.vehicle_size
+    - let vehicle_type = toShow.vehicle_type
     div
     div.row
-    div(class='vehicleAttr mr-3') vehicle ID is:
+    div(class='vehicleAttr mr-3') vehicleID is:
     div #{vehicleid}
     div.row
-    div(class='vehicleAttr mr-3') vehicle Type is:
-    div #{vehicle_type}
+    div(class='vehicleAttr mr-3') vehicle_name is:
+    div #{vehicle_name}
     div.row
-    div(class='vehicleAttr mr-3') vehicle Size is:
+    div(class='vehicleAttr mr-3') vehicle_size is:
     div #{vehicle_size}
     div.row
-    div(class='vehicleAttr mr-3') vehicle name is:
-    div #{vehicle_name}
+    div(class='vehicleAttr mr-3') vehicle_type is:
+    div #{vehicle_type}
