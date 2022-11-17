@@ -1,0 +1,23 @@
+extends layout
+block content
+  h1= title
+  if (toShow == null) 
+    h2 No instance to delete 
+  else    
+    - let vehicleid = toShow._id
+    - let vehicle_name = toShow.vehicle_name
+    - let vehicle_type = toShow.vehicle_type
+    - let vehicle_size = toShow.vehicle_size
+    div
+    div.row
+    div(class='vehicleAttr mr-3') vehicle ID is:
+    div #{vehicleid}
+    div.row
+    div(class='vehicleAttr mr-3') vehicle name is:
+    div #{vehicle_name}
+    div.row
+    div(class='vehicleAttr mr-3') vehicle type is:
+    div #{vehicle_type}
+    div.row
+    div(class='vehicleAttr mr-3') vehicle size is:
+    div #{vehicle_size}

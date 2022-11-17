@@ -46,19 +46,19 @@ async function recreateDB(){
  // Delete everything
  await vehicle.deleteMany();
  let instance1 = new
-vehicle({Vehicle_name:"Bike",Vehicle_size:4,Vehicle_type:'Motorcycles'});
+vehicle({vehicle_name:"Bike",vehicle_size:4,vehicle_type:'Motorcycles'});
  instance1.save( function(err,doc) {
  if(err) return console.error(err);
  console.log("First vehicle details saved")
  });
  let instance2 = new
- vehicle({Vehicle_name:"Car",Vehicle_size:6,Vehicle_type:"Sedan"});
+ vehicle({vehicle_name:"Car",vehicle_size:6,vehicle_type:"Sedan"});
   instance2.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("Second vehicle details saved")
   });
   let instance3 = new
-  vehicle({Vehicle_name:"Van",Vehicle_size:8,Vehicle_type:"Trucks"});
+  vehicle({vehicle_name:"Van",vehicle_size:8,vehicle_type:"Trucks"});
    instance3.save( function(err,doc) {
    if(err) return console.error(err);
    console.log("Third vehicle details saved")
