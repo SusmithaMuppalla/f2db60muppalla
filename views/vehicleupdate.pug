@@ -1,31 +1,42 @@
 extends layout
 block content
   h1= title
-  form(id='vehicleForm', action="/resource/vehicle", method="POST")
-    div.form-group
-        label.vehicleAttr(for='vehicle_name') vehicle name
-        input#vehicle_name(type='text', name='vehicle_name')
-    div.form-group
-        label.vehicleAttr(for='vehicle_type') vehicle vehicle_type
-        input#vehicle_type(type='number', name='vehicle_type')
-    div.form-group
-        label.vehicleAttr(for='vehicle_size') vehicle vehicle_size
-        input#vehicle_size(type='text', name='vehicle_size')
-    input(type="submit")
-  script.
+  if (toShow == null) 
+    h2 No instance to delete 
+  else      
+    - let vehicleid = toShow._id
+    - let vehicle_type = toShow.vehicle_type
+    - let vehicle_name = toShow.vehicle_name
+    - let vehicle_size = toShow.vehicle_size
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{vehicleid}
+    - let actionid = "/resource/vehicle/" + vehicleid
+    form(id='vehicleForm', action= actionid, method="PUT")
+        div.form-group
+            label.vehicleAttr(for='vehicle_type') vehicle type
+            input#vehicle_type(type='text', name='vehicle_type', value= vehicle_type )
+        div.form-group
+            label.vehicleAttr(for='vehicle_size') vehicle size
+            input#vehicle_size(type='number', name='vehicle_size', value= vehicle_size )
+        div.form-group
+            label.vehicleAttr(for='vehicle_name') vehicle name
+            input#vehicle_name(type='text', name='vehicle_name', value= vehicle_name )
+        input(type="submit")
+    script.
         document.forms['vehicleForm'].addEventListener('submit', (event) => {
         event.preventDefault();
         // TODO do something here to show user that form is being submitted
         fetch(event.target.action, {
-        method: 'POST',
+        method: 'PUT',
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
         }).then((resp) => {
         return resp.json(); // or resp.text() or whatever the server sends
         }).then((body) => {
-        alert("Save succeded")
+        alert("Update succeded")
         // TODO handle body
         }).catch((error) => {
         // TODO handle error
-        alert("Save failed " + error )
+        alert("Update failed " + error )
         });
         });

@@ -2,11 +2,11 @@ extends layout
 block content
   h1= title
   -
-  -var result = [{"Vehicle_name":"Bike","Vehicle_size":4,"Vehicle_type":"Motorcycles"},{"Vehicle_name":"Car","Vehicle_type":"Sedan","Vehicle_size":6,},{"Vehicleg_name":"Van","Vehicle_type":"Trucks","Vehicle_size":8},{"Vehicle_name":"Zeep","Vehicle_type":"LongVehicle","Vehicle_size":10}]
+  -var result = [{"vehicle_name":"Bike","vehicle_size":4,"vehicle_type":"Motorcycles"},{"vehicle_name":"Car","vehicle_type":"Sedan","vehicle_size":6,},{"vehicle_name":"Van","vehicle_type":"Trucks","vehicle_size":8},{"vehicle_name":"Zeep","vehicle_type":"LongVehicle","vehicle_size":10}]
   div.container-fluid
      div.row
         each item,index in result
-            div.col-sm-2(onclick=`buy(${index})`) Vehicle_Name: #{item["Vehicle_name"]}  <br>  Vehicle_size: #{item["Vehicle_size"]} <br> Vehicle_type: #{item["Vehicle_type"]} 
+            div.col-sm-2(onclick=`buy(${index})`) vehicle_name: #{item["vehicle_name"]}  <br>  vehicle_size: #{item["vehicle_size"]} <br> vehicle_type: #{item["vehicle_type"]} 
   script.
       function buy(index){
          alert("you purchased item "+(index+1))

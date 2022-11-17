@@ -8,13 +8,13 @@ var vehicle_controller = require('../controllers/vehicle');
 router.get('/', api_controller.api);
 /// vehicle ROUTES ///
 // POST request for creating a vehicle.  
-router.post('/vehicles', vehicle_controller.vehicle_create_post);
+router.post('/vehicle', vehicle_controller.vehicle_create_post);
 // DELETE request to delete vehicle.
-router.delete('/vehicles/:id', vehicle_controller.vehicle_delete);
+router.delete('/vehicle/:id', vehicle_controller.vehicle_delete);
 // PUT request to update vehicle.
-router.put('/vehicles/:id', vehicle_controller.vehicle_update_put);
+router.put('/vehicle/:id', vehicle_controller.vehicle_update_put);
 // GET request for one vehicle.
-router.get('/vehicles/:id', vehicle_controller.vehicle_detail);
+router.get('/vehicle/:id', vehicle_controller.vehicle_detail);
 // GET request for list of all vehicle items.
-router.get('/vehicles', vehicle_controller.vehicle_list);
+router.get('/vehicle', vehicle_controller.vehicle_list);
 module.exports = router;
