@@ -7,7 +7,22 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require('passport'); 
 var LocalStrategy = require('passport-local').Strategy; 
-var vehicle = require("./models/vehicle");
+
+passport.use(new LocalStrategy( 
+  function(username, password, done) { 
+    Account.findOne({ username: username }, function (err, user) { 
+      if (err) { return done(err); } 
+      if (!user) { 
+        return done(null, false, { message: 'Incorrect username.' }); 
+      } 
+      if (!user.validPassword(password)) { 
+        return done(null, false, { message: 'Incorrect password.' }); 
+      } 
+      return done(null, user); 
+    }); 
+  } ));
+
+
 
 require('dotenv').config();
 const connectionString =
@@ -32,6 +47,7 @@ var vehicleRouter = require('./routes/vehicle');
 var gridbuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
+var vehicle = require("./models/vehicle");
 
 var app = express();
 // view engine setup
@@ -104,19 +120,7 @@ async function recreateDB(){
 }
 let reseed = true;
 if (reseed) { recreateDB();}
-passport.use(new LocalStrategy( 
-  function(username, password, done) { 
-    Account.findOne({ username: username }, function (err, user) { 
-      if (err) { return done(err); } 
-      if (!user) { 
-        return done(null, false, { message: 'Incorrect username.' }); 
-      } 
-      if (!user.validPassword(password)) { 
-        return done(null, false, { message: 'Incorrect password.' }); 
-      } 
-      return done(null, user); 
-    }); 
-  } ));
+
 
 
 module.exports = app;

@@ -2,14 +2,21 @@ extends layout
 
 block content
   h1= title
+  <br>
+   a(href='/vehicle/Create')
+     button.btn(class="btn btn-success") Create
   -
   - let result=results
   div(class="container-fluid")
      div(class='row m-1')
         each item,index in result
             -let destination = `dispatch(\"/vehicle/update?id=${item._id}\")`
+            -let deleteview = `dispatch(\"/vehicle/delete?id=${item._id}\")`
+            -let detailview = `dispatch(\"/vehicle/detail?id=${item._id}\")`
             div.col-sm-2(onclick=`buy(${index})`) vehicle name: #{item["vehicle_name"]}  <br>  vehicle_size: #{item["vehicle_size"]} <br> vehicle_type: #{item["vehicle_type"]} 
             button.btn(class="btn-primary ml-1", onclick = destination) Update
+            button.btn(class="btn-primary ml-1", onclick = detailview ) Details 
+            button.btn(class="btn-primary ml-1", onclick = deleteview) Delete
   script.
       function buy(index){
          alert("you purchased item "+(index+1))
